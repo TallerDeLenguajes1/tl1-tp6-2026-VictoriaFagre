@@ -1,0 +1,9 @@
+# Anotaciones de Tp 6
+_La única forma de poder usar números como enteros en C# es haciendo un parseo:_
+
+**int num;**
+**string cadena = Console.ReadLine();**
+**int.TryParse(cadena, out num);**
+
+*Lo que hace es asignar el numero que escribí en la cadena al tipo de dato entero definido para num*
+
