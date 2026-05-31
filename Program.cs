@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 // Console.WriteLine("Hello, World!");
 // int a;
@@ -56,30 +56,31 @@ do
 
 //CalculadoraV2
 
-double num;
+double numAux = (double)num;
 do
 {
     Console.WriteLine("Ingrese un número:");
     string cadena = Console.ReadLine();
-    double.TryParse(cadena, out num);
+    double.TryParse(cadena, out numAux);
 }while(num < 0);
 
 double resultado;
-resultado = Math.Abs(num);
+resultado = Math.Abs(numAux);
 Console.WriteLine("Valor Absoluto:"+resultado);
-resultado = Math.Pow(num,2);
+resultado = Math.Pow(numAux,2);
 Console.WriteLine("Potencia doble:"+resultado);
-resultado = Math.Sin(num);
+resultado = Math.Sin(numAux);
 Console.WriteLine("Seno del num:"+resultado);
-resultado = Math.Cos(num);
+resultado = Math.Cos(numAux);
 Console.WriteLine("Coseno del num:"+resultado);
-resultado = Math.Sqrt(num);
+resultado = Math.Sqrt(numAux);
 Console.WriteLine("Raíz cuadrada del num:"+resultado);
-resultado = (int)num;
+resultado = (int)numAux;
 Console.WriteLine("Parte entera de un float:"+resultado);
 
-int num1, num2;
-string aux;
+// int num1, num2;
+// string aux; ya que quedan redundantes por la inicialización en un ejercicio anterior
+
 
 do
 {
