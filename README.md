@@ -59,3 +59,45 @@ _string resultado = texto.Substring(0, 4);_
 _Console.WriteLine(resultado); // Resultado: "Hola"_
 
 
+### Uso de toString()
+
+*"cosa".toString(): Se utiliza para convertir cualquier objeto, valor o variable a su representación en formato de texto (cadena de caracteres). Está disponible de forma nativa en todos los objetos, ya que se hereda de la clase base Object.*
+
+**Ejemplos:**
+_ToString("C"): Formatea como moneda (Currency), usando la configuración regional actual.ToString("N2"): Formatea con separador de miles y limita a 2 decimales.ToString("P"): Muestra el número como porcentaje._
+
+**Ej convencional:**
+_int numero = 42;_
+_string textoNumero = numero.ToString(); // Devuelve "42"_
+
+_bool activo = true;_
+_string textoBooleano = activo.ToString(); // Devuelve "True"_
+
+**Ej 1:**
+_double saldo = 1250.50;_
+_string formatoMoneda = saldo.ToString("C"); // Por ejemplo: "$1.250,50"_
+
+**Ej 2:**
+_DateTime fechaHoy = DateTime.Now;_
+_string fechaFormateada = fechaHoy.ToString("dd/MM/yyyy");_
+
+### Diferencias entre string.compare() y "cosa".compareTo("otracosa")
+
+_Recordar que cuando hay un acierto la comparación da 0 y cuando no -1_
+*Diferencias:* 
+*string.compare(): Estático (string.Compare(a, b)) . Seguro. Si un parámetro es null, lo maneja sin lanzar excepciones. Muy flexible. Ofrece sobrecargas para ignorar mayúsculas y especificar culturas. Para lógicas condicionales genéricas y comparaciones avanzadas.*
+
+*"cosa".compareTo("otracosa"): De instancia (a.CompareTo(b)). Inseguro. Lanza una NullReferenceException si la instancia que invoca el método es null. Rígido. Siempre realiza una comparación sensible a la cultura actual y a las mayúsculas.*
+
+**Cosas que noté haciendo el código:**
+_separada[i].CompareTo(palabra) == 0 no ignoraba mayusculas siendo igual palabra_
+_StringComparison.OrdinalIgnoreCase era parte del parametro del if controlador pero la saqué, era + complicado_
+
+_poner que la frase al ser leida y luego al ser comparada dentro del for sea en .ToLower() o en .ToUpper() facilita todo asi no uso otra cosa mas para que sepa como comparar al encontrarse caracteres iguales pero diferenciado en mayúsculas y/o minúsculas_
+
+**Tener en cuenta:**
+_En .Split(separador) tomo de separador puntos y espacios si no no me toma todos los casos al separar_
+_.IndexOfAny(): Este método busca en todo el texto y me dice exactamente en qué posición está el operador, sin importar cuántos dígitos tenga el primer número._
+
+
+

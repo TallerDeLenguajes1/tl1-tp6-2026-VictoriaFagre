@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Runtime.InteropServices.Marshalling;
 
 // Console.WriteLine("Hello, World!");
 // int a;
@@ -48,3 +50,128 @@ longitud = concatenada.Length;
 string resultado = concatenada.Substring(0,5);
 Console.Write("Subcadena: "+resultado);
 
+//CalculadoraV1
+int num1, num2, num;
+string aux, pregu;
+
+Console.Write("\n");
+do
+{
+    Console.WriteLine("----------------MENÚ INTERACTIVO-----------------");
+    Console.WriteLine("||ELEGIR UNA OPCIÓN|| 1: Suma| 2: Resta | 3: Multiplicación | 4: División:");
+    aux = Console.ReadLine();
+    int.TryParse(aux,out num);
+
+    Console.WriteLine("Ingrese num1:");
+    aux = Console.ReadLine();
+    //a num1 le pongo el valor de aux
+    int.TryParse(aux,out num1);
+
+    Console.WriteLine("Ingrese num2:");
+    aux = Console.ReadLine();
+
+    int.TryParse(aux, out num2);
+
+    switch (num){
+        case 1: 
+            num = num1 + num2;
+            Console.WriteLine($@"La suma de {num1} y de {num2} es igual a: {num}");
+        break;
+
+        case 2: 
+            num = num1 - num2; 
+            Console.WriteLine($@"La diferencia de {num1} y de {num2} es igual a: {num}");
+        break;
+
+        case 3: 
+            num = num1 * num2;
+            Console.WriteLine($@"El producto de {num1} y de {num2} es igual a: {num}");
+        break;
+
+        case 4: 
+            num = num1 / num2;
+            Console.WriteLine($@"La división de {num1} y de {num2} es igual a: {num}");
+        break;
+    }
+
+    Console.WriteLine("¿Quiere seguir haciendo operaciones?");
+    pregu = Console.ReadLine();
+
+}while(pregu == "si" || pregu == "Si");
+
+
+//uso de toString();
+Console.WriteLine("Letra por letra de las cadenas concatenadas:");
+foreach (var letra in concatenada)
+{
+    Console.WriteLine(letra);
+}
+
+Console.WriteLine("Ingrese la palabra a buscar en cadena:");
+string palabra = Console.ReadLine().ToLower();
+
+//con comillas simples porque se habla de char
+string[] separada = concatenada.Split(' ', '.');
+int cont = 0;
+for (int i = 0; i < separada.Length; i++)
+{
+    if (string.Compare(separada[i].ToLower(), palabra)== 0)
+    {
+        cont++;
+    }
+}
+
+Console.WriteLine(@$"Se repite/ocurre {cont} veces esa palabra en: {concatenada}");
+
+string cadAux = concatenada.ToLower();
+Console.Write("Cadena en minúsculas:"+cadAux +"\n");
+cadAux = concatenada.ToUpper();
+Console.Write("Cadena en mayúsculas:"+cadAux);
+
+
+Console.WriteLine("\nIngrese una cadena: ");
+
+string cadena = Console.ReadLine();
+
+string[] arreglo = cadena.Split(' ', '.');
+for (int i = 0; i < arreglo.Length; i++)
+{
+    Console.WriteLine(arreglo[i]);
+}
+
+
+
+Console.WriteLine("Ingrese una operacion con 2 numeros asi se resuelve:");
+string operacion = Console.ReadLine();
+string[] nums = operacion.Split('+','-','*','/');
+char[] caracteresOperadores = { '+', '-', '*', '/' };
+int posicionOperador = operacion.IndexOfAny(caracteresOperadores);
+
+// Extraigo el operador usando esa posición exacta, con numeros cuenta cada num como posición
+//no toma al numero completo como string por mas que este guardado así
+
+string operador = operacion.Substring(posicionOperador, 1);
+
+num1 = int.Parse(nums[0]);
+num2 = int.Parse(nums[1]);
+
+switch (operador)
+{
+    case "+":
+        num = num1 + num2;
+    break;
+    
+    case "-":
+        num = num1 - num2;
+    break;
+
+    case "*":
+        num = num1 * num2;
+    break;
+
+    case "/":
+        num = num1 / num2;
+    break;
+}
+
+Console.WriteLine(@$"La siguiente operación queda: {num1} {operador} {num2} = {num}");
